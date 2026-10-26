@@ -5,7 +5,7 @@ The webcam is the input. Every frame is passed to a **pretrained** YOLO model,
 and the result is shown in a small Streamlit web page with bounding boxes, class names
 and confidence scores.
 
-**Live demo:** <https://realtime-object-detection-yolo.streamlit.app>
+**Live demo:** <https://object-detection-ipcv.streamlit.app/>
 (choose **Browser webcam (real-time)**, click **START** and allow camera access)
 
 **Course:** Image Processing and Computer Vision
