@@ -32,11 +32,6 @@ In this project we built a small application that:
 4. draws a box, the object name and the confidence score for every detected object,
 5. shows the processed frame, the FPS and a simple object count in a Streamlit page.
 
-> **Academic honesty note:** we did **not** train YOLO and we did not design any new
-> detection algorithm. A pretrained YOLO model (trained by Ultralytics on the COCO
-> dataset) is used for detection. Our work is integrating that model with OpenCV
-> and a simple Streamlit interface for real-time detection.
-
 ## Features
 
 - Real-time object detection from the webcam
@@ -64,15 +59,12 @@ In this project we built a small application that:
 | streamlit-webrtc | Streams the viewer's browser webcam to the app and the processed video back (WebRTC), for real-time detection online |
 | NumPy | Converting an uploaded image file into an OpenCV image |
 
-There is no separate backend server, database, REST API or custom JavaScript front-end.
-Streamlit is the only UI framework. `streamlit-webrtc` is a ready-made Streamlit component.
 
 ## Project Structure
 
 ```text
 Real-Time-Object-Detection-YOLO/
 ├── README.md               <- this file
-├── PROJECT_CONTEXT.md      <- short technical summary of the project
 ├── requirements.txt        <- Python packages
 ├── packages.txt            <- system library needed by OpenCV on Streamlit Cloud (Linux)
 ├── .gitignore
@@ -100,7 +92,7 @@ You need **Python 3.10, 3.11 or 3.12** (we tested with Python 3.11.9).
 **1. Open a terminal in the project folder**
 
 ```bash
-cd Real-Time-Object-Detection-YOLO
+cd D2_TEAM_17
 ```
 
 **2. Create a virtual environment**
@@ -155,12 +147,11 @@ To stop the server, press `Ctrl + C` in the terminal.
 - **Where it is stored:** `models/yolo11n.pt`. The file is in `.gitignore`, so it is not
   committed to GitHub.
 
-See [models/README.md](models/README.md) for more details.
 
 ## Usage
 
 1. Start the app with `streamlit run app.py`, or open the
-   [live demo](https://realtime-object-detection-yolo.streamlit.app).
+   [live demo](https://object-detection-ipcv.streamlit.app/).
 2. In the sidebar, choose an **Input source**:
    - **Browser webcam (real-time)**: click **START** and allow camera access in the browser.
      Works on your laptop and in the online version.
@@ -217,7 +208,7 @@ past the camera is not counted as "one unique person".
 
 ## Online Deployment (Streamlit Community Cloud)
 
-The app is deployed at **<https://realtime-object-detection-yolo.streamlit.app>**, straight from
+The app is deployed at **<https://object-detection-ipcv.streamlit.app/>**, straight from
 this GitHub repository (branch `main`, main file `app.py`). Every push to `main` redeploys it.
 
 Things that were needed for the cloud (Linux) server:
@@ -261,8 +252,6 @@ Measured on our test laptop (MacBook Air, Apple M3, 8 GB RAM, CPU only):
   appeared (0.46). In the webcam feed a wristwatch appeared as `clock 0.33` and once was
   wrongly labelled `bottle 0.25`.
 
-Your numbers will be different on other hardware. All screenshots, result images and the full
-tables are in [outputs/](outputs/README.md).
 
 ## Limitations
 
@@ -302,18 +291,4 @@ tables are in [outputs/](outputs/README.md).
 - Mobile or edge-device deployment (e.g. Raspberry Pi, Jetson)
 - Speed optimisations such as model export (ONNX) and lower input resolution
 
-## Credits
 
-- The object detection model is the pretrained **YOLO11n** from [Ultralytics](https://github.com/ultralytics/ultralytics)
-  (licensed under AGPL-3.0). We did not train or modify it.
-- `bus.jpg` and `zidane.jpg`, used for the image-mode tests in `outputs/`, are sample images that ship with the
-  Ultralytics package.
-
-## References
-
-1. Ultralytics YOLO documentation: <https://docs.ultralytics.com/>
-2. Ultralytics YOLO11 model page: <https://docs.ultralytics.com/models/yolo11/>
-3. OpenCV documentation: <https://docs.opencv.org/>
-4. Streamlit documentation: <https://docs.streamlit.io/>
-5. J. Redmon, S. Divvala, R. Girshick, A. Farhadi, "You Only Look Once: Unified, Real-Time Object Detection", CVPR 2016.
-6. T.-Y. Lin et al., "Microsoft COCO: Common Objects in Context", ECCV 2014.
